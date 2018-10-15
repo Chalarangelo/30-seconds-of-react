@@ -29,10 +29,4 @@ if (htmlNode) {
 
 <!-- tags: setup, typescript -->
 
-<!-- expertise: 0,1,2 -->
-<!-- Expertise levels:
-  0: beginner
-  1: intermediate
-  2: advanced
-  3: expert
--->
+<!-- expertise: 0 -->
