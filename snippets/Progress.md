@@ -39,7 +39,6 @@ This component assumes that the percentage is a non-decimal percentage (0-100), 
     background: gray;
 }
 ```
----
 
 ```jsx
 import "path/to/Progress.css";
