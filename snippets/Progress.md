@@ -1,13 +1,11 @@
 ### Progress Bar
 
 #### What is this component?
-This is a Progress Bar component that shows the progression of an operation to the end-user/
+This is a Progress Bar component that shows the progression of an operation to the end-user.
 
 #### How does this component work?
 This component assumes that the percentage is a non-decimal percentage (0-100), and uses that value to set the width of an internal div based on that prop.
 
-
-Your css file:
 ```css
 /* Progress.css */
 
@@ -21,7 +19,7 @@ Your css file:
   }
 }
 
-/* actual styles for the progress bar */
+/* Progress Bar styles */
 .progress {
     background: red;
     height: 100%;
@@ -42,6 +40,7 @@ Your css file:
 }
 ```
 ---
+
 ```jsx
 import "path/to/Progress.css";
 
