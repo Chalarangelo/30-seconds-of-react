@@ -9,7 +9,7 @@ Use a`<div>` to wrap both the`<textarea>` and the `<p>` element that displays th
 
 ```jsx
 function LimitedTextarea({ rows, cols, initialValue, limit }) {
-  const [content, setContent] = React.useState(value);
+  const [content, setContent] = React.useState(initialValue);
 
   const setFormattedContent = text => {
     text.length > limit ? setContent(text.slice(0, limit)) : setContent(text);
