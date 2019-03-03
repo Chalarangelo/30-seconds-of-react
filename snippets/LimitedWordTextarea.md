@@ -5,12 +5,12 @@ Renders a textarea component with a word limit.
 Use the `React.useState()` hook to create the `content` and `wordCount` state variables and set their values to `value` and `0` respectively.
 Create a method `setFormattedContent`, which uses `String.prototype.split(' ')` to turn the input into an array of words and check if the result of applying `Array.prototype.filter(Boolean)` has a `length` longer than `limit`.
 If the afforementioned `length` exceeds the `limit`, trim the input, otherwise return the raw input, updating `content` and `wordCount` accordingly in both cases.
-Use the `React.useEffect()` hook to call the `setFormattedContent` method on the value of the `content` state variable.
+Use the `React.useEffect()` hook to call the `setFormattedContent` method on the value of the `content` state variable when mounting and when the limit prop changes.
 Use a`<div>` to wrap both the`<textarea>` and the `<p>` element that displays the character count and bind the `onChange` event of the `<textarea>` to call `setFormattedContent` with the value of `event.target.value`.
 
 ```jsx
-function LimitedWordTextarea({ rows, cols, value, limit }) {
-  const [content, setContent] = React.useState(value);
+function LimitedWordTextarea({ rows, cols, initialValue, limit }) {
+  const [content, setContent] = React.useState(initialValue);
   const [wordCount, setWordCount] = React.useState(0);
 
   const setFormattedContent = text => {
@@ -31,7 +31,7 @@ function LimitedWordTextarea({ rows, cols, value, limit }) {
 
   React.useEffect(() => {
     setFormattedContent(content);
-  }, []);
+  }, [limit]);
 
   return (
     <div>
@@ -51,7 +51,7 @@ function LimitedWordTextarea({ rows, cols, value, limit }) {
 
 ```jsx
 ReactDOM.render(
-  <LimitedWordTextArea limit={5} value="Hello there!" />,
+  <LimitedWordTextArea limit={5} initialValue="Hello there!" />,
   document.getElementById('root')
 );
 ```

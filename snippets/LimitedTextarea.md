@@ -4,11 +4,11 @@ Renders a textarea component with a character limit.
 
 Use the `React.useState()` hook to create the `content` state variable and set its value to `value`.
 Create a method `setFormattedContent`, which trims the content of the input if it's longer than `limit`.
-Use the `React.useEffect()` hook to call the `setFormattedContent` method on the value of the `content` state variable.
+Use the `React.useEffect()` hook to call the `setFormattedContent` method on the value of the `content` state variable when mounting and when the limit prop changes.
 Use a`<div>` to wrap both the`<textarea>` and the `<p>` element that displays the character count and bind the `onChange` event of the `<textarea>` to call `setFormattedContent` with the value of `event.target.value`.
 
 ```jsx
-function LimitedTextarea({ rows, cols, value, limit }) {
+function LimitedTextarea({ rows, cols, initialValue, limit }) {
   const [content, setContent] = React.useState(value);
 
   const setFormattedContent = text => {
@@ -17,7 +17,7 @@ function LimitedTextarea({ rows, cols, value, limit }) {
 
   React.useEffect(() => {
     setFormattedContent(content);
-  }, []);
+  }, [limit]);
 
   return (
     <div>
@@ -36,7 +36,7 @@ function LimitedTextarea({ rows, cols, value, limit }) {
 ```
 
 ```jsx
-ReactDOM.render(<LimitedTextarea limit={32} value="Hello!" />, document.getElementById('root'));
+ReactDOM.render(<LimitedTextarea limit={32} initialValue="Hello!" />, document.getElementById('root'));
 ```
 
 <!-- tags: input,state,effect -->
