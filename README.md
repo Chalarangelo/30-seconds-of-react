@@ -409,7 +409,7 @@ function MultiselectCheckbox({ options, onChange }) {
   const [data, setData] = React.useState(options);
 
   const toggle = item => {
-    data.map((_, key) => {
+    data.forEach((_, key) => {
       if (data[key].label === item.label) data[key].checked = !item.checked;
     });
     setData([...data]);
