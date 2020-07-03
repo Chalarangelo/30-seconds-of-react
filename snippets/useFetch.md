@@ -56,4 +56,3 @@ const ImageFetch = props => {
 
 ReactDOM.render(<ImageFetch />, document.getElementById('root'));
 ```
-``
