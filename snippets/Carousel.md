@@ -12,8 +12,9 @@ Renders a carousel component.
 - Render the carousel items using `React.cloneElement()` and pass down rest `props` along with the computed styles.
 
 ```jsx
-const Carousel = ({ carouselItems, ...rest }) => {
+const Carousel = ({ carouselItems, mouseControl = false , ...rest }) => {
   const [active, setActive] = React.useState(0);
+  const [control, setControl] = React.useState(false);
   let scrollInterval = null;
   const style = {
     carousel: {
@@ -28,14 +29,22 @@ const Carousel = ({ carouselItems, ...rest }) => {
     }
   };
   React.useEffect(() => {
-    scrollInterval = setTimeout(() => {
-      setActive((active + 1) % carouselItems.length);
-    }, 2000);
+    if(!control){
+      scrollInterval = setTimeout(() => {
+        setActive((active + 1) % carouselItems.length);
+      }, 2000);
+    } else {
+      clearTimeout(scrollInterval)
+    }
     return () => clearTimeout(scrollInterval);
   });
 
   return (
-    <div style={style.carousel}>
+    <div
+      style={style.carousel}
+      onMouseEnter={e => mouseControl && setControl(true)}
+      onMouseLeave={e => mouseControl && setControl(false)}
+      >
       {carouselItems.map((item, index) => {
         const activeStyle = active === index ? style.visible : {};
         return React.cloneElement(item, {
