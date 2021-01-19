@@ -10,12 +10,7 @@ Executes a callback immediately before a component is unmounted and destroyed.
 
 ```jsx
 const useComponentWillUnmount = onUnmountHandler => {
-  React.useEffect(
-    () => () => {
-      onUnmountHandler();
-    },
-    []
-  );
+  React.useEffect(onUnmountHandler,[]);
 };
 ```
 
