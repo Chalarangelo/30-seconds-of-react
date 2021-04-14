@@ -36,8 +36,8 @@ const useCopyToClipboard = text => {
 
   const [copied, setCopied] = React.useState(false);
 
-  const copy = React.useCallback(() => {
-    if (!copied) setCopied(copyToClipboard(text));
+  const copy = React.useCallback(copyText => {
+    if (!copied) setCopied(copyToClipboard(copyText || text));
   }, [text]);
   React.useEffect(() => () => setCopied(false), [text]);
 
