@@ -36,7 +36,11 @@ const useIntersectionObserver = (options) => {
 
 ```jsx
 const App = () => {
-  const [containerRef, isVisible] = useIntersectionObserver();
+  const [containerRef, isVisible] = useIntersectionObserver({
+    root: null,
+    rootMargin: '0px',
+    threshold: 1.0
+  });
   return <div ref={containerRef}>{isVisible? 'visible': 'not visible' }</div>;
 };
 ReactDOM.render(<App />, document.getElementById('root'));
